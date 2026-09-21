@@ -1,0 +1,11 @@
+{
+  "temperature": "--",
+  "humidity": "--",
+  "wind": "--",
+  "description": "Čakam na podatke...",
+  "weather_code": 0,
+  "min": "--",
+  "max": "--",
+  "forecast": [],
+  "updated": "--"
+}
