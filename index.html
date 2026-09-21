@@ -2,359 +2,290 @@
 <html lang="sl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#070b12">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>P9 Smart Display</title>
 
 <style>
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 html, body {
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    background: #070b12;
     color: white;
-    background:
-        radial-gradient(circle at 25% 10%, #17263b 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, #10243a 0%, transparent 35%),
-        #070b12;
+    font-family: Arial, sans-serif;
 }
 
-.dashboard {
-    width: 100vw;
-    height: 100vh;
+#display {
+    width: 100%;
+    height: 100%;
     padding: 4vh 5vw;
-
-    display: flex;
-    flex-direction: column;
 }
 
-/* ZGORNJA VRSTICA */
+/* ZGORNJI DEL */
 
-.top {
-    height: 9vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+#top {
+    height: 10%;
+    position: relative;
 }
 
 #date {
-    font-size: 2.3vw;
-    color: #aeb9c7;
+    font-size: 2.2vw;
+    color: #aab4c2;
 }
 
-.status {
-    font-size: 1.3vw;
-    color: #8995a5;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+#status {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2vw;
+    color: #999;
 }
 
-.dot {
+#dot {
+    display: inline-block;
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background: #48d17d;
-    box-shadow: 0 0 10px #48d17d;
+    background: #ff5555;
+    margin-right: 7px;
 }
 
 /* GLAVNI DEL */
 
-.main {
-    flex: 1;
-
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-
-    gap: 5vw;
-
-    align-items: center;
+#main {
+    height: 60%;
+    position: relative;
 }
 
 /* URA */
 
-.clock-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.clock-row {
-    display: flex;
-    align-items: flex-end;
+#clockBox {
+    position: absolute;
+    left: 0;
+    top: 15%;
+    width: 53%;
 }
 
 #clock {
-    font-size: 16vw;
-    font-weight: 200;
-    letter-spacing: -0.8vw;
-    line-height: 0.9;
+    font-size: 15vw;
+    line-height: 1;
+    font-weight: normal;
+    letter-spacing: -0.7vw;
 }
 
 #seconds {
-    font-size: 2.5vw;
-    color: #5f6c7c;
-    margin-left: 2vw;
-    margin-bottom: 1.5vh;
+    font-size: 2.2vw;
+    color: #566273;
+    margin-left: 1vw;
 }
 
 /* VREME */
 
-.weather {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#weatherBox {
+    position: absolute;
+    right: 0;
+    top: 5%;
+    width: 42%;
 }
 
-.weather-current {
-    display: flex;
-    align-items: center;
-    gap: 2vw;
+#currentWeather {
+    white-space: nowrap;
 }
 
 #weatherIcon {
-    font-size: 7vw;
+    display: inline-block;
+    width: 30%;
+    font-size: 6vw;
+    vertical-align: middle;
+    text-align: center;
 }
 
-.weather-text {
-    display: flex;
-    flex-direction: column;
+#weatherData {
+    display: inline-block;
+    width: 65%;
+    vertical-align: middle;
 }
 
 #temperature {
-    font-size: 6vw;
-    font-weight: 300;
-    line-height: 1;
+    font-size: 5.5vw;
 }
 
-.location {
-    font-size: 2vw;
+#location {
+    font-size: 1.8vw;
     margin-top: 1vh;
 }
 
 #description {
-    font-size: 1.5vw;
-    color: #8492a5;
+    color: #8996a8;
+    font-size: 1.3vw;
     margin-top: 0.7vh;
 }
 
-/* PODATKI */
+/* INFO KARTICE */
 
-.info {
+#info {
     margin-top: 4vh;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 1vw;
+    white-space: nowrap;
 }
 
 .card {
-    background: rgba(255,255,255,0.055);
-    border: 1px solid rgba(255,255,255,0.07);
-
-    border-radius: 15px;
-
-    padding: 1.8vh 1vw;
-
+    display: inline-block;
+    width: 31%;
+    margin-right: 2%;
+    padding: 1.5vh 0.5vw;
     text-align: center;
+    background: #111822;
+    border-radius: 12px;
 }
 
-.card-title {
+.card:last-child {
+    margin-right: 0;
+}
+
+.cardTitle {
+    font-size: 0.8vw;
     color: #718094;
-    font-size: 0.9vw;
 }
 
-.card-value {
+.cardValue {
+    font-size: 1.25vw;
     margin-top: 0.7vh;
-    font-size: 1.4vw;
 }
 
 /* NAPOVED */
 
-.forecast {
-    height: 18vh;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 1.5vw;
-
-    margin-top: 2vh;
+#forecast {
+    height: 22%;
+    white-space: nowrap;
 }
 
-.forecast-card {
-    background: rgba(255,255,255,0.04);
-    border-radius: 15px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 0.5vh;
+.forecastCard {
+    display: inline-block;
+    vertical-align: top;
+    width: 31.5%;
+    height: 100%;
+    margin-right: 2%;
+    text-align: center;
+    background: #0d131c;
+    border-radius: 14px;
+    padding-top: 2vh;
 }
 
-.forecast-day {
-    color: #7e8b9c;
+.forecastCard:last-child {
+    margin-right: 0;
+}
+
+.forecastDay {
+    color: #7d8999;
     font-size: 1vw;
 }
 
-.forecast-icon {
-    font-size: 2.2vw;
+.forecastIcon {
+    font-size: 2.5vw;
+    margin: 0.8vh 0;
 }
 
-.forecast-temp {
+.forecastTemp {
     font-size: 1.25vw;
 }
 
-/* SPODNJA VRSTICA */
+/* SPODAJ */
 
-.footer {
-    height: 6vh;
+#footer {
+    height: 8%;
+    position: relative;
+    padding-top: 2vh;
+    color: #465162;
+    font-size: 0.9vw;
+}
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-
-    color: #455163;
-
-    font-size: 1vw;
-    letter-spacing: 1px;
+#updated {
+    position: absolute;
+    right: 0;
+    top: 2vh;
 }
 
 /* NOČNI NAČIN */
 
 body.night {
-    background: #000;
+    background: #000000;
 }
 
-body.night .weather,
-body.night .forecast,
-body.night .status,
-body.night .footer {
-    opacity: 0.08;
-}
-
-body.night #date {
-    color: #333;
+body.night #weatherBox,
+body.night #forecast,
+body.night #footer,
+body.night #status {
+    opacity: 0.15;
 }
 
 body.night #clock {
     color: #666;
 }
 
-/* ZA MANJŠE ZASLONE */
-
-@media (max-width: 800px) {
-
-    #clock {
-        font-size: 15vw;
-    }
-
-    .dashboard {
-        padding: 3vh 4vw;
-    }
-
+body.night #date {
+    color: #333;
 }
 </style>
 </head>
 
-
 <body>
 
-<div class="dashboard">
+<div id="display">
 
-    <div class="top">
+    <div id="top">
+        <div id="date">Nalagam datum...</div>
 
-        <div id="date">
-            Nalagam datum...
+        <div id="status">
+            <span id="dot"></span>
+            <span id="statusText">ČAKAM NA PODATKE</span>
         </div>
-
-        <div class="status">
-            <span class="dot" id="dot"></span>
-            <span id="onlineText">ONLINE</span>
-        </div>
-
     </div>
 
+    <div id="main">
 
-    <div class="main">
-
-        <!-- URA -->
-
-        <div class="clock-area">
-
-            <div class="clock-row">
-
-                <div id="clock">
-                    00:00
-                </div>
-
-                <div id="seconds">
-                    00
-                </div>
-
-            </div>
-
+        <div id="clockBox">
+            <span id="clock">00:00</span>
+            <span id="seconds">00</span>
         </div>
 
+        <div id="weatherBox">
 
-        <!-- VREME -->
+            <div id="currentWeather">
 
-        <div class="weather">
+                <div id="weatherIcon">--</div>
 
-            <div class="weather-current">
-
-                <div id="weatherIcon">
-                    ☀️
-                </div>
-
-                <div class="weather-text">
-
-                    <div id="temperature">
-                        --°
-                    </div>
-
-                    <div class="location">
-                        Ptuj
-                    </div>
-
-                    <div id="description">
-                        Nalagam vreme...
-                    </div>
-
+                <div id="weatherData">
+                    <div id="temperature">--°</div>
+                    <div id="location">Ptuj</div>
+                    <div id="description">Nalagam vreme...</div>
                 </div>
 
             </div>
 
-
-            <div class="info">
+            <div id="info">
 
                 <div class="card">
-                    <div class="card-title">💧 VLAGA</div>
-                    <div class="card-value" id="humidity">-- %</div>
+                    <div class="cardTitle">VLAGA</div>
+                    <div class="cardValue" id="humidity">-- %</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-title">🌬 VETER</div>
-                    <div class="card-value" id="wind">-- km/h</div>
+                    <div class="cardTitle">VETER</div>
+                    <div class="cardValue" id="wind">-- km/h</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-title">🌡 DANES</div>
-                    <div class="card-value" id="minmax">--° / --°</div>
+                    <div class="cardTitle">DANES</div>
+                    <div class="cardValue" id="minmax">--° / --°</div>
                 </div>
 
             </div>
@@ -363,410 +294,402 @@ body.night #clock {
 
     </div>
 
+    <div id="forecast">
 
-    <!-- NAPOVED -->
-
-    <div class="forecast">
-
-        <div class="forecast-card">
-            <div class="forecast-day">JUTRI</div>
-            <div class="forecast-icon" id="icon1">☀️</div>
-            <div class="forecast-temp" id="temp1">--° / --°</div>
+        <div class="forecastCard">
+            <div class="forecastDay" id="day1">JUTRI</div>
+            <div class="forecastIcon" id="icon1">--</div>
+            <div class="forecastTemp" id="temp1">--° / --°</div>
         </div>
 
-        <div class="forecast-card">
-            <div class="forecast-day" id="day2">--</div>
-            <div class="forecast-icon" id="icon2">☀️</div>
-            <div class="forecast-temp" id="temp2">--° / --°</div>
+        <div class="forecastCard">
+            <div class="forecastDay" id="day2">--</div>
+            <div class="forecastIcon" id="icon2">--</div>
+            <div class="forecastTemp" id="temp2">--° / --°</div>
         </div>
 
-        <div class="forecast-card">
-            <div class="forecast-day" id="day3">--</div>
-            <div class="forecast-icon" id="icon3">☀️</div>
-            <div class="forecast-temp" id="temp3">--° / --°</div>
+        <div class="forecastCard">
+            <div class="forecastDay" id="day3">--</div>
+            <div class="forecastIcon" id="icon3">--</div>
+            <div class="forecastTemp" id="temp3">--° / --°</div>
         </div>
 
     </div>
 
-
-    <div class="footer">
-
-        <div>
-            P9 SMART DISPLAY
-        </div>
-
-        <div id="updated">
-            VREME: --
-        </div>
-
+    <div id="footer">
+        <span>P9 SMART DISPLAY</span>
+        <span id="updated">VREME: --</span>
     </div>
 
 </div>
 
-
 <script>
 
-/* ===============================
-   NASTAVITVE
-================================ */
+/*
+=========================================
+URA IN DATUM
+=========================================
+*/
 
-const LAT = 46.4201;
-const LON = 15.8697;
+var dnevi = [
+    "nedelja",
+    "ponedeljek",
+    "torek",
+    "sreda",
+    "četrtek",
+    "petek",
+    "sobota"
+];
 
+var meseci = [
+    "januar",
+    "februar",
+    "marec",
+    "april",
+    "maj",
+    "junij",
+    "julij",
+    "avgust",
+    "september",
+    "oktober",
+    "november",
+    "december"
+];
 
-/* ===============================
-   URA
-================================ */
+function two(n) {
+    if (n < 10) {
+        return "0" + n;
+    }
+    return "" + n;
+}
 
 function updateClock() {
 
-    const now = new Date();
+    var now = new Date();
 
-    const h =
-        String(now.getHours()).padStart(2,"0");
+    document.getElementById("clock").innerHTML =
+        two(now.getHours()) + ":" + two(now.getMinutes());
 
-    const m =
-        String(now.getMinutes()).padStart(2,"0");
+    document.getElementById("seconds").innerHTML =
+        two(now.getSeconds());
 
-    const s =
-        String(now.getSeconds()).padStart(2,"0");
+    var datum =
+        dnevi[now.getDay()] + ", " +
+        now.getDate() + ". " +
+        meseci[now.getMonth()] + " " +
+        now.getFullYear();
 
+    datum =
+        datum.charAt(0).toUpperCase() +
+        datum.substring(1);
 
-    document.getElementById("clock").textContent =
-        h + ":" + m;
+    document.getElementById("date").innerHTML = datum;
 
-    document.getElementById("seconds").textContent =
-        s;
+    /*
+    NOČNI NAČIN
+    23:00 - 06:00
+    */
 
+    var hour = now.getHours();
 
-    const datum =
-        new Intl.DateTimeFormat(
-            "sl-SI",
-            {
-                weekday:"long",
-                day:"numeric",
-                month:"long",
-                year:"numeric"
-            }
-        ).format(now);
-
-
-    document.getElementById("date").textContent =
-        datum.charAt(0).toUpperCase()
-        + datum.slice(1);
-
-
-    /* NOČNI NAČIN 23:00 - 06:00 */
-
-    const hour = now.getHours();
-
-    if(hour >= 23 || hour < 6) {
-
-        document.body.classList.add("night");
-
+    if (hour >= 23 || hour < 6) {
+        document.body.className = "night";
     } else {
-
-        document.body.classList.remove("night");
-
+        document.body.className = "";
     }
-
 }
 
 updateClock();
 
-setInterval(updateClock,1000);
+setInterval(updateClock, 1000);
 
 
-/* ===============================
-   VREMENSKE IKONE
-================================ */
+/*
+=========================================
+VREMENSKE IKONE
+=========================================
+*/
 
-function weather(code) {
+function getWeatherIcon(code) {
 
-    if(code === 0)
-        return ["☀️","Jasno"];
+    code = parseInt(code, 10);
 
-    if(code === 1)
-        return ["🌤️","Pretežno jasno"];
+    if (code === 0) {
+        return "☀";
+    }
 
-    if(code === 2)
-        return ["⛅","Delno oblačno"];
+    if (code === 1) {
+        return "🌤";
+    }
 
-    if(code === 3)
-        return ["☁️","Oblačno"];
+    if (code === 2) {
+        return "⛅";
+    }
 
-    if(code === 45 || code === 48)
-        return ["🌫️","Megla"];
+    if (code === 3) {
+        return "☁";
+    }
 
-    if(code >= 51 && code <= 57)
-        return ["🌦️","Pršenje"];
+    if (code === 45 || code === 48) {
+        return "🌫";
+    }
 
-    if(code >= 61 && code <= 67)
-        return ["🌧️","Dež"];
+    if (code >= 51 && code <= 57) {
+        return "🌦";
+    }
 
-    if(code >= 71 && code <= 77)
-        return ["🌨️","Sneg"];
+    if (code >= 61 && code <= 67) {
+        return "🌧";
+    }
 
-    if(code >= 80 && code <= 82)
-        return ["🌦️","Plohe"];
+    if (code >= 71 && code <= 77) {
+        return "❄";
+    }
 
-    if(code >= 85 && code <= 86)
-        return ["🌨️","Snežne plohe"];
+    if (code >= 80 && code <= 82) {
+        return "🌦";
+    }
 
-    if(code >= 95)
-        return ["⛈️","Nevihta"];
+    if (code >= 85 && code <= 86) {
+        return "🌨";
+    }
 
-    return ["🌡️","Vreme"];
+    if (code >= 95) {
+        return "⚡";
+    }
+
+    return "●";
 }
 
 
-/* ===============================
-   DAN V TEDNU
-================================ */
+/*
+=========================================
+DAN V TEDNU
+=========================================
+*/
 
-function dayName(date) {
+function getDayName(dateText) {
 
-    return new Intl.DateTimeFormat(
-        "sl-SI",
-        {weekday:"short"}
-    )
+    var parts = dateText.split("-");
 
-    .format(new Date(date + "T12:00:00"))
+    var date = new Date(
+        parseInt(parts[0], 10),
+        parseInt(parts[1], 10) - 1,
+        parseInt(parts[2], 10)
+    );
 
-    .replace(".","")
+    var kratki = [
+        "NED",
+        "PON",
+        "TOR",
+        "SRE",
+        "ČET",
+        "PET",
+        "SOB"
+    ];
 
-    .toUpperCase();
-
+    return kratki[date.getDay()];
 }
 
 
-/* ===============================
-   PRENOS VREMENA
-================================ */
+/*
+=========================================
+STATUS
+=========================================
+*/
 
-async function getWeather() {
+function setStatus(ok) {
 
-    const url =
-    "https://api.open-meteo.com/v1/forecast" +
+    var dot = document.getElementById("dot");
+    var text = document.getElementById("statusText");
 
-    "?latitude=" + LAT +
+    if (ok) {
 
-    "&longitude=" + LON +
+        dot.style.background = "#48d17d";
+        dot.style.boxShadow = "0 0 10px #48d17d";
 
-    "&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m" +
+        text.innerHTML = "PODATKI OK";
 
-    "&daily=weather_code,temperature_2m_max,temperature_2m_min" +
+    } else {
 
-    "&timezone=Europe%2FLjubljana" +
+        dot.style.background = "#ff5555";
+        dot.style.boxShadow = "0 0 10px #ff5555";
 
-    "&forecast_days=4";
-
-
-    try {
-
-        const response = await fetch(url);
-
-        if(!response.ok)
-            throw new Error("Napaka API");
+        text.innerHTML = "NAPAKA PODATKOV";
+    }
+}
 
 
-        const data = await response.json();
+/*
+=========================================
+PREBERI WEATHER.JSON
+=========================================
+*/
 
-        const current = data.current;
+function loadWeather() {
 
-        const w = weather(current.weather_code);
+    var xhr;
 
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        return;
+    }
 
-        /* TRENUTNO */
+    /*
+    Dodamo trenutni čas, da stari Chrome
+    ne uporablja stare weather.json datoteke.
+    */
 
-        document.getElementById("weatherIcon")
-            .textContent = w[0];
+    var url =
+        "weather.json?t=" +
+        new Date().getTime();
 
-        document.getElementById("description")
-            .textContent = w[1];
+    xhr.open("GET", url, true);
 
-        document.getElementById("temperature")
-            .textContent =
-            Math.round(current.temperature_2m) + "°";
+    xhr.onreadystatechange = function() {
 
-        document.getElementById("humidity")
-            .textContent =
-            Math.round(current.relative_humidity_2m)
-            + " %";
+        if (xhr.readyState === 4) {
 
-        document.getElementById("wind")
-            .textContent =
-            Math.round(current.wind_speed_10m)
-            + " km/h";
+            if (xhr.status === 200 || xhr.status === 0) {
 
+                try {
 
-        /* DANES */
+                    var data =
+                        JSON.parse(xhr.responseText);
 
-        const minToday =
-            Math.round(
-                data.daily.temperature_2m_min[0]
-            );
+                    showWeather(data);
 
-        const maxToday =
-            Math.round(
-                data.daily.temperature_2m_max[0]
-            );
+                    setStatus(true);
 
+                } catch (e) {
 
-        document.getElementById("minmax")
-            .textContent =
-            minToday + "° / "
-            + maxToday + "°";
+                    document.getElementById("description").innerHTML =
+                        "Napaka pri branju podatkov";
 
+                    setStatus(false);
+                }
 
-        /* NAPOVED */
+            } else {
 
-        for(let i=1; i<=3; i++) {
+                document.getElementById("description").innerHTML =
+                    "weather.json ni dosegljiv";
 
-            const fw =
-                weather(
-                    data.daily.weather_code[i]
-                );
+                setStatus(false);
+            }
+        }
+    };
 
-
-            document.getElementById("icon"+i)
-                .textContent = fw[0];
-
-
-            const min =
-                Math.round(
-                    data.daily.temperature_2m_min[i]
-                );
-
-            const max =
-                Math.round(
-                    data.daily.temperature_2m_max[i]
-                );
+    xhr.send(null);
+}
 
 
-            document.getElementById("temp"+i)
-                .textContent =
-                min + "° / " + max + "°";
+/*
+=========================================
+PRIKAŽI VREME
+=========================================
+*/
+
+function showWeather(data) {
+
+    document.getElementById("temperature").innerHTML =
+        data.temperature + "°";
+
+    document.getElementById("humidity").innerHTML =
+        data.humidity + " %";
+
+    document.getElementById("wind").innerHTML =
+        data.wind + " km/h";
+
+    document.getElementById("description").innerHTML =
+        data.description;
+
+    document.getElementById("weatherIcon").innerHTML =
+        getWeatherIcon(data.weather_code);
+
+    document.getElementById("minmax").innerHTML =
+        data.min + "° / " + data.max + "°";
+
+    if (data.location) {
+        document.getElementById("location").innerHTML =
+            data.location;
+    }
 
 
-            if(i > 1) {
+    /*
+    3-DNEVNA NAPOVED
+    */
 
-                document.getElementById("day"+i)
-                    .textContent =
-                    dayName(
-                        data.daily.time[i]
-                    );
+    if (data.forecast && data.forecast.length >= 3) {
 
+        var i;
+
+        for (i = 0; i < 3; i++) {
+
+            var number = i + 1;
+            var f = data.forecast[i];
+
+            if (i === 0) {
+
+                document.getElementById("day1").innerHTML =
+                    "JUTRI";
+
+            } else {
+
+                document.getElementById(
+                    "day" + number
+                ).innerHTML =
+                    getDayName(f.date);
             }
 
+            document.getElementById(
+                "icon" + number
+            ).innerHTML =
+                getWeatherIcon(f.code);
+
+            document.getElementById(
+                "temp" + number
+            ).innerHTML =
+                f.min + "° / " + f.max + "°";
         }
-
-
-        /* ČAS POSODOBITVE */
-
-        const now = new Date();
-
-        document.getElementById("updated")
-            .textContent =
-            "VREME POSODOBLJENO "
-            +
-            now.toLocaleTimeString(
-                "sl-SI",
-                {
-                    hour:"2-digit",
-                    minute:"2-digit"
-                }
-            );
-
-
-        setOnline(true);
-
     }
 
-    catch(error) {
 
-        console.error(error);
+    /*
+    ČAS PODATKOV
+    */
 
-        document.getElementById("description")
-            .textContent =
-            "Vreme trenutno ni dosegljivo";
+    var updatedText = data.updated;
 
-        setOnline(false);
+    if (updatedText && updatedText.indexOf("T") !== -1) {
 
+        var parts = updatedText.split("T");
+
+        if (parts.length > 1) {
+            updatedText = parts[1];
+        }
     }
 
+    document.getElementById("updated").innerHTML =
+        "VREME POSODOBLJENO: " + updatedText;
 }
 
 
-/* ===============================
-   ONLINE / OFFLINE
-================================ */
+/*
+=========================================
+ZAŽENI
+=========================================
+*/
 
-function setOnline(state) {
+loadWeather();
 
-    const dot =
-        document.getElementById("dot");
+/*
+Vsakih 5 minut P9 ponovno prebere weather.json.
+GitHub pa vremenske podatke posodablja približno
+vsakih 15 minut.
+*/
 
-    const text =
-        document.getElementById("onlineText");
-
-
-    if(state) {
-
-        dot.style.background =
-            "#48d17d";
-
-        dot.style.boxShadow =
-            "0 0 10px #48d17d";
-
-        text.textContent =
-            "ONLINE";
-
-    }
-
-    else {
-
-        dot.style.background =
-            "#ff5555";
-
-        dot.style.boxShadow =
-            "0 0 10px #ff5555";
-
-        text.textContent =
-            "OFFLINE";
-
-    }
-
-}
-
-
-/* PRVI PRENOS */
-
-getWeather();
-
-
-/* VREME OSVEŽI VSAKIH 15 MINUT */
-
-setInterval(
-    getWeather,
-    15 * 60 * 1000
-);
-
-
-/* ČE SE INTERNET VRNE */
-
-window.addEventListener(
-    "online",
-    getWeather
-);
-
-
-window.addEventListener(
-    "offline",
-    function() {
-        setOnline(false);
-    }
-);
+setInterval(loadWeather, 5 * 60 * 1000);
 
 </script>
 
