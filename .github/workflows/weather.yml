@@ -1,98 +1,11 @@
 name: Posodobi vreme
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  update-weather:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Prenesi repository
-        uses: actions/checkout@v4
-
-      - name: Pridobi vreme za Ptuj
-        shell: python
-        run: |
-          import json
-          import urllib.request
-
-          url = (
-              "https://api.open-meteo.com/v1/forecast"
-              "?latitude=46.4201"
-              "&longitude=15.8697"
-              "&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m"
-              "&daily=weather_code,temperature_2m_max,temperature_2m_min"
-              "&timezone=Europe%2FLjubljana"
-              "&forecast_days=4"
-          )
-
-          with urllib.request.urlopen(url) as response:
-              data = json.loads(response.read().decode("utf-8"))
-
-          codes = {
-              0: "Jasno",
-              1: "Pretežno jasno",
-              2: "Delno oblačno",
-              3: "Oblačno",
-              45: "Megla",
-              48: "Megla",
-              51: "Rahlo pršenje",
-              53: "Pršenje",
-              55: "Močno pršenje",
-              61: "Rahel dež",
-              63: "Dež",
-              65: "Močan dež",
-              71: "Rahel sneg",
-              73: "Sneg",
-              75: "Močan sneg",
-              80: "Plohe",
-              81: "Plohe",
-              82: "Močne plohe",
-              85: "Snežne plohe",
-              86: "Močne snežne plohe",
-              95: "Nevihta",
-              96: "Nevihta",
-              99: "Močna nevihta"
-          }
-
-          current = data["current"]
-          daily = data["daily"]
-
-          forecast = []
-
-          for i in range(1, 4):
-              forecast.append({
-                  "date": daily["time"][i],
-                  "code": daily["weather_code"][i],
-                  "min": round(daily["temperature_2m_min"][i]),
-                  "max": round(daily["temperature_2m_max"][i])
-              })
-
-          output = {
-              "temperature": round(current["temperature_2m"]),
-              "humidity": round(current["relative_humidity_2m"]),
-              "wind": round(current["wind_speed_10m"]),
-              "description": codes.get(current["weather_code"], "Vreme"),
-              "weather_code": current["weather_code"],
-              "min": round(daily["temperature_2m_min"][0]),
-              "max": round(daily["temperature_2m_max"][0]),
-              "forecast": forecast,
-              "updated": current["time"]
-          }
-
-          with open("weather.json", "w", encoding="utf-8") as f:
-              json.dump(output, f, ensure_ascii=False, indent=2)
-
-      - name: Shrani vreme
-        run: |
-          git config user.name "P9 Weather Bot"
-          git config user.email "actions@github.com"
-          git add weather.json
-          git diff --cached --quiet || git commit -m "Samodejna posodobitev vremena"
-          git push
+      - name: Test
+        run: echo "P9 Smart Display OK"
