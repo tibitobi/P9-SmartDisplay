@@ -1,34 +1,34 @@
 {
   "location": "Ptuj",
-  "temperature": 11,
-  "humidity": 82,
+  "temperature": 7,
+  "humidity": 100,
   "wind": 2,
-  "weather_code": 0,
-  "description": "Jasno",
-  "min": 3,
+  "weather_code": 45,
+  "description": "Megla",
+  "min": 5,
   "max": 22,
   "forecast": [
-    {
-      "date": "2026-09-27",
-      "code": 45,
-      "description": "Megla",
-      "min": 4,
-      "max": 23
-    },
     {
       "date": "2026-09-28",
       "code": 45,
       "description": "Megla",
-      "min": 6,
-      "max": 24
+      "min": 5,
+      "max": 23
     },
     {
       "date": "2026-09-29",
       "code": 45,
       "description": "Megla",
-      "min": 6,
-      "max": 22
+      "min": 5,
+      "max": 23
+    },
+    {
+      "date": "2026-09-30",
+      "code": 45,
+      "description": "Megla",
+      "min": 3,
+      "max": 23
     }
   ],
-  "updated": "2026-09-26T21:45"
+  "updated": "2026-09-27T00:30"
 }
