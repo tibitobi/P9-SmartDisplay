@@ -1,0 +1,10 @@
+{
+  "name": "P9 Smart Display",
+  "short_name": "Smart Display",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#070b12",
+  "theme_color": "#070b12"
+}
