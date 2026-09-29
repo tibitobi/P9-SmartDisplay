@@ -1,8 +1,8 @@
 {
   "location": "Ptuj",
-  "temperature": 22,
-  "humidity": 34,
-  "wind": 15,
+  "temperature": 12,
+  "humidity": 72,
+  "wind": 2,
   "weather_code": 0,
   "description": "Jasno",
   "min": 6,
@@ -12,7 +12,7 @@
       "date": "2026-09-30",
       "code": 45,
       "description": "Megla",
-      "min": 4,
+      "min": 5,
       "max": 24
     },
     {
@@ -30,5 +30,5 @@
       "max": 23
     }
   ],
-  "updated": "2026-09-29T17:00"
+  "updated": "2026-09-29T22:00"
 }
