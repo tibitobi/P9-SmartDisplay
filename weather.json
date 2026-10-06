@@ -1,10 +1,10 @@
 {
   "location": "Ptuj",
-  "temperature": 5,
-  "humidity": 98,
-  "wind": 4,
-  "weather_code": 45,
-  "description": "Megla",
+  "temperature": 6,
+  "humidity": 86,
+  "wind": 3,
+  "weather_code": 0,
+  "description": "Jasno",
   "min": 2,
   "max": 23,
   "forecast": [
@@ -12,23 +12,23 @@
       "date": "2026-10-07",
       "code": 3,
       "description": "Oblačno",
-      "min": 11,
+      "min": 10,
       "max": 24
     },
     {
       "date": "2026-10-08",
       "code": 80,
       "description": "Rahle plohe",
-      "min": 16,
+      "min": 15,
       "max": 21
     },
     {
       "date": "2026-10-09",
-      "code": 80,
-      "description": "Rahle plohe",
+      "code": 61,
+      "description": "Rahel dež",
       "min": 8,
-      "max": 17
+      "max": 15
     }
   ],
-  "updated": "2026-10-06T02:30"
+  "updated": "2026-10-06T08:45"
 }
