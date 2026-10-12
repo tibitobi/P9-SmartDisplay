@@ -1,7 +1,7 @@
 {
   "location": "Ptuj",
-  "temperature": 12,
-  "humidity": 91,
+  "temperature": 10,
+  "humidity": 93,
   "wind": 4,
   "weather_code": 61,
   "description": "Rahel dež",
@@ -19,16 +19,16 @@
       "date": "2026-10-14",
       "code": 61,
       "description": "Rahel dež",
-      "min": 6,
+      "min": 5,
       "max": 16
     },
     {
       "date": "2026-10-15",
       "code": 45,
       "description": "Megla",
-      "min": 9,
-      "max": 14
+      "min": 8,
+      "max": 15
     }
   ],
-  "updated": "2026-10-12T02:15"
+  "updated": "2026-10-12T08:15"
 }
