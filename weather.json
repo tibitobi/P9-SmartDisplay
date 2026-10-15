@@ -1,10 +1,10 @@
 {
   "location": "Ptuj",
-  "temperature": 4,
-  "humidity": 100,
-  "wind": 4,
-  "weather_code": 45,
-  "description": "Megla",
+  "temperature": 15,
+  "humidity": 70,
+  "wind": 5,
+  "weather_code": 2,
+  "description": "Delno oblačno",
   "min": 4,
   "max": 18,
   "forecast": [
@@ -19,16 +19,16 @@
       "date": "2026-10-17",
       "code": 45,
       "description": "Megla",
-      "min": 3,
-      "max": 18
+      "min": 2,
+      "max": 17
     },
     {
       "date": "2026-10-18",
       "code": 45,
       "description": "Megla",
-      "min": 9,
-      "max": 17
+      "min": 8,
+      "max": 18
     }
   ],
-  "updated": "2026-10-15T06:45"
+  "updated": "2026-10-15T11:30"
 }
