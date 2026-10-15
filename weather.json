@@ -3,23 +3,23 @@
   "temperature": 11,
   "humidity": 87,
   "wind": 3,
-  "weather_code": 2,
-  "description": "Delno oblačno",
-  "min": 3,
+  "weather_code": 3,
+  "description": "Oblačno",
+  "min": 4,
   "max": 17,
   "forecast": [
     {
       "date": "2026-10-16",
       "code": 45,
       "description": "Megla",
-      "min": 3,
+      "min": 5,
       "max": 17
     },
     {
       "date": "2026-10-17",
       "code": 45,
       "description": "Megla",
-      "min": 1,
+      "min": 2,
       "max": 18
     },
     {
@@ -27,8 +27,8 @@
       "code": 45,
       "description": "Megla",
       "min": 8,
-      "max": 18
+      "max": 19
     }
   ],
-  "updated": "2026-10-15T20:30"
+  "updated": "2026-10-15T23:45"
 }
