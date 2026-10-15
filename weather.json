@@ -1,12 +1,12 @@
 {
   "location": "Ptuj",
-  "temperature": 15,
-  "humidity": 70,
+  "temperature": 17,
+  "humidity": 61,
   "wind": 5,
   "weather_code": 2,
   "description": "Delno oblačno",
   "min": 4,
-  "max": 18,
+  "max": 17,
   "forecast": [
     {
       "date": "2026-10-16",
@@ -30,5 +30,5 @@
       "max": 18
     }
   ],
-  "updated": "2026-10-15T11:30"
+  "updated": "2026-10-15T16:15"
 }
