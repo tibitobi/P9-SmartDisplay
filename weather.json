@@ -1,20 +1,13 @@
 {
   "location": "Ptuj",
-  "temperature": 0,
-  "humidity": 89,
-  "wind": 2,
-  "weather_code": 0,
-  "description": "Jasno",
-  "min": -4,
+  "temperature": -1,
+  "humidity": 91,
+  "wind": 0,
+  "weather_code": 3,
+  "description": "Oblačno",
+  "min": -2,
   "max": 4,
   "forecast": [
-    {
-      "date": "2026-11-25",
-      "code": 61,
-      "description": "Rahel dež",
-      "min": -1,
-      "max": 3
-    },
     {
       "date": "2026-11-26",
       "code": 73,
@@ -24,11 +17,18 @@
     },
     {
       "date": "2026-11-27",
-      "code": 45,
-      "description": "Megla",
+      "code": 71,
+      "description": "Rahel sneg",
+      "min": -1,
+      "max": 1
+    },
+    {
+      "date": "2026-11-28",
+      "code": 71,
+      "description": "Rahel sneg",
       "min": -1,
       "max": 1
     }
   ],
-  "updated": "2026-11-24T19:00"
+  "updated": "2026-11-25T03:30"
 }
